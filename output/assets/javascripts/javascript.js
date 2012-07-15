@@ -1,4 +1,4 @@
-var TCA = { dom : {}, data : {}, responds : {}, fn: $.fn };
+var JSWEB = { dom : {}, data : {}, responds : {}, fn: $.fn };
 
 //DOM Ready
 $(function(){

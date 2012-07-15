@@ -1,10 +1,8 @@
-@import "compass/css3";
-
-// $sprite_repeatx: sprite-map("_sprites/repeat-x/*.png", $position: 0%, $spacing: 20px, $repeat: repeat-x);
-// $sprite_norepeat: sprite-map("_sprites/no-repeat/*.png", $spacing: 20px, $repeat: no-repeat);*/
-
-@import "partials/mixins";
-@import "partials/normalization";
+@import "partials/bourbon";
+@import "partials/reset";
 @import "partials/prototypes";
-@import "partials/modules";
 
+//Common Styles
+
+@import "partials/modules";
+@import "partials/responsive";

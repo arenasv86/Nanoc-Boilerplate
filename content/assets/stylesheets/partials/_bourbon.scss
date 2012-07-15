@@ -1,0 +1,930 @@
+/* ============= */
+/* = Animation = */
+/* ============= */
+// http://www.w3.org/TR/css3-animations/#the-animation-name-property-
+// Each of these mixins support comma separated lists of values, which allows different transitions for individual properties to be described in a single style rule. Each value in the list corresponds to the value at that same position in the other properties.
+
+// Official animation shorthand property.
+@mixin animation ($animation-1,
+  $animation-2: false, $animation-3: false,
+  $animation-4: false, $animation-5: false,
+  $animation-6: false, $animation-7: false,
+  $animation-8: false, $animation-9: false)
+  {
+    $full: compact($animation-1, $animation-2, $animation-3, $animation-4,
+                   $animation-5, $animation-6, $animation-7, $animation-8, $animation-9);
+
+  @include prefixer(animation, $full);
+}
+
+// Individual Animation Properties
+@mixin animation-name ($name-1,
+  $name-2: false, $name-3: false,
+  $name-4: false, $name-5: false,
+  $name-6: false, $name-7: false,
+  $name-8: false, $name-9: false)
+  {
+    $full:  compact($name-1, $name-2, $name-3, $name-4,
+                    $name-5, $name-6, $name-7, $name-8, $name-9);
+
+  @include prefixer(animation-name, $full);
+}
+
+
+@mixin animation-duration ($time-1: 0,
+  $time-2: false, $time-3: false,
+  $time-4: false, $time-5: false,
+  $time-6: false, $time-7: false,
+  $time-8: false, $time-9: false)
+  {
+    $full:  compact($time-1, $time-2, $time-3, $time-4,
+                    $time-5, $time-6, $time-7, $time-8, $time-9);
+
+  @include prefixer(animation-duration, $full);
+}
+
+
+@mixin animation-timing-function ($motion-1: ease,
+//  ease | linear | ease-in | ease-out | ease-in-out
+  $motion-2: false, $motion-3: false,
+  $motion-4: false, $motion-5: false,
+  $motion-6: false, $motion-7: false,
+  $motion-8: false, $motion-9: false)
+  {
+    $full:  compact($motion-1, $motion-2, $motion-3, $motion-4,
+                    $motion-5, $motion-6, $motion-7, $motion-8, $motion-9);
+
+  @include prefixer(animation-timing-function, $full);
+}
+
+
+@mixin animation-iteration-count ($value-1: 1,
+//  infinite | <number>
+  $value-2: false, $value-3: false,
+  $value-4: false, $value-5: false,
+  $value-6: false, $value-7: false,
+  $value-8: false, $value-9: false)
+  {
+    $full:  compact($value-1, $value-2, $value-3, $value-4,
+                    $value-5, $value-6, $value-7, $value-8, $value-9);
+
+  @include prefixer(animation-iteration-count, $full);
+}
+
+
+@mixin animation-direction ($direction-1: normal,
+//  normal | alternate
+  $direction-2: false, $direction-3: false,
+  $direction-4: false, $direction-5: false,
+  $direction-6: false, $direction-7: false,
+  $direction-8: false, $direction-9: false)
+  {
+    $full:  compact($direction-1, $direction-2, $direction-3, $direction-4,
+                    $direction-5, $direction-6, $direction-7, $direction-8, $direction-9);
+
+  @include prefixer(animation-direction, $full);
+}
+
+
+@mixin animation-play-state ($state-1: running,
+//  running | paused
+  $state-2: false, $state-3: false,
+  $state-4: false, $state-5: false,
+  $state-6: false, $state-7: false,
+  $state-8: false, $state-9: false)
+  {
+    $full:  compact($state-1, $state-2, $state-3, $state-4,
+                    $state-5, $state-6, $state-7, $state-8, $state-9);
+
+  @include prefixer(animation-play-state, $full);
+}
+
+
+@mixin animation-delay ($time-1: 0,
+  $time-2: false, $time-3: false,
+  $time-4: false, $time-5: false,
+  $time-6: false, $time-7: false,
+  $time-8: false, $time-9: false)
+  {
+    $full:  compact($time-1, $time-2, $time-3, $time-4,
+                    $time-5, $time-6, $time-7, $time-8, $time-9);
+
+  @include prefixer(animation-delay, $full);
+}
+
+
+@mixin animation-fill-mode ($mode-1: none,
+//  http://goo.gl/l6ckm
+//  none | forwards | backwards | both
+  $mode-2: false, $mode-3: false,
+  $mode-4: false, $mode-5: false,
+  $mode-6: false, $mode-7: false,
+  $mode-8: false, $mode-9: false)
+  {
+    $full:  compact($mode-1, $mode-2, $mode-3, $mode-4,
+                    $mode-5, $mode-6, $mode-7, $mode-8, $mode-9);
+
+  @include prefixer(animation-fill-mode, $full);
+}
+
+
+/* ============== */
+/* = Appearance = */
+/* ============== */
+@mixin appearance ($value) {
+  @include prefixer(appearance, $value, webkit, moz, ms, o);
+}
+
+
+/* ==================== */
+/* = Background Image = */
+/* ==================== */
+//************************************************************************//
+// Background-image property for adding multiple background images with
+// gradients, or for stringing multiple gradients together.
+//************************************************************************//
+
+@mixin background-image(
+  $image-1       , $image-2: false,
+  $image-3: false, $image-4: false,
+  $image-5: false, $image-6: false,
+  $image-7: false, $image-8: false,
+  $image-9: false, $image-10: false
+) {
+  $images: compact($image-1, $image-2,
+           $image-3, $image-4,
+           $image-5, $image-6,
+           $image-7, $image-8,
+           $image-9, $image-10);
+
+  background-image: add-prefix($images, webkit);
+  background-image: add-prefix($images, moz);
+  background-image: add-prefix($images, ms);
+  background-image: add-prefix($images, o);
+  background-image: add-prefix($images);
+}
+
+
+@function add-prefix($images, $vendor: false) {
+  $images-prefixed: ();
+
+  @for $i from 1 through length($images) {
+    $type: type-of(nth($images, $i)); // Get type of variable - List or String
+
+    // If variable is a list - Gradient
+    @if $type == list {
+      $gradient-type: nth(nth($images, $i), 1); // Get type of gradient (linear || radial)
+      $gradient-args: nth(nth($images, $i), 2); // Get actual gradient (red, blue)
+
+      $gradient: render-gradients($gradient-args, $gradient-type, $vendor);
+      $images-prefixed: append($images-prefixed, $gradient, comma);
+    }
+
+    // If variable is a string - Image
+    @else if $type == string {
+      $images-prefixed: join($images-prefixed, nth($images, $i), comma);
+    }
+  }
+  @return $images-prefixed;
+}
+
+
+
+//Examples:
+  //@include background-image(linear-gradient(top, orange, red));
+  //@include background-image(radial-gradient(50% 50%, cover circle, orange, red));
+  //@include background-image(url("/images/a.png"), linear-gradient(orange, red));
+  //@include background-image(url("image.png"), linear-gradient(orange, red), url("image.png"));
+  //@include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, hsla(0, 100%, 100%, 0.08) 50%, transparent 50%), linear-gradient(orange, red);
+  
+  
+/* =================== */
+/* = Background Size = */
+/* =================== */
+@mixin background-size ($length-1,
+  $length-2: false, $length-3: false,
+  $length-4: false, $length-5: false,
+  $length-6: false, $length-7: false,
+  $length-8: false, $length-9: false)
+  {
+    $full: compact($length-1, $length-2, $length-3, $length-4,
+                   $length-5, $length-6, $length-7, $length-8, $length-9);
+
+@include prefixer(background-size, $full, webkit, moz, ms, o);
+}
+
+
+/* ============== */
+/* = Background = */
+/* ============== */
+//************************************************************************//
+// Background property for adding multiple backgrounds using shorthand
+// notation.
+//************************************************************************//
+
+@mixin background(
+  $background-1       , $background-2: false,
+  $background-3: false, $background-4: false,
+  $background-5: false, $background-6: false,
+  $background-7: false, $background-8: false,
+  $background-9: false, $background-10: false,
+  $fallback: false
+) {
+  $backgrounds: compact($background-1, $background-2,
+                $background-3, $background-4,
+                $background-5, $background-6,
+                $background-7, $background-8,
+                $background-9, $background-10);
+
+  $fallback-color: false;
+  @if (type-of($fallback) == color) or ($fallback == "transparent") {
+    $fallback-color: $fallback;
+  }
+  @else {
+    $fallback-color: extract-background-color($backgrounds);
+  }
+
+  @if $fallback-color {
+    background-color: $fallback-color;
+  }
+  background: background-add-prefix($backgrounds, webkit);
+  background: background-add-prefix($backgrounds, moz);
+  background: background-add-prefix($backgrounds, ms);
+  background: background-add-prefix($backgrounds, o);
+  background: background-add-prefix($backgrounds);
+}
+
+@function extract-background-color($backgrounds) {
+  $final-bg-layer: nth($backgrounds, length($backgrounds));
+  @if type-of($final-bg-layer) == list {
+    @for $i from 1 through length($final-bg-layer) {
+      $value: nth($final-bg-layer, $i);
+      @if type-of($value) == color {
+        @return $value;
+      }
+    }
+  }
+  @return false;
+}
+
+
+@function background-add-prefix($backgrounds, $vendor: false) {
+  $backgrounds-prefixed: ();
+
+  @for $i from 1 through length($backgrounds) {
+    $shorthand: nth($backgrounds, $i); // Get member for current index
+    $type: type-of($shorthand); // Get type of variable - List or String
+
+    // If shorthand is a list
+    @if $type == list {
+      $first-member: nth($shorthand, 1); // Get first member of shorthand
+
+      // Linear Gradient
+      @if index(linear radial, nth($first-member, 1)) {
+        $gradient-type: nth($first-member, 1); // linear || radial
+
+        // Get actual gradient (red, blue)
+        $gradient-args: false;
+        $shorthand-start: false;
+        // Linear gradient and positioning, repeat, etc. values
+        @if type-of($first-member) == list {
+          $gradient-args: nth($first-member, 2);
+          $shorthand-start: 2;
+        }
+        // Linear gradient only
+        @else {
+          $gradient-args: nth($shorthand, 2); // Get actual gradient (red, blue)
+          $shorthand-start: 3;
+        }
+
+        $gradient: render-gradients($gradient-args, $gradient-type, $vendor);
+        @for $j from $shorthand-start through length($shorthand) {
+          $gradient: join($gradient, nth($shorthand, $j), space);
+        }
+        $backgrounds-prefixed: append($backgrounds-prefixed, $gradient, comma);
+      }
+
+      // Image with additional properties
+      @else {
+        $backgrounds-prefixed: append($backgrounds-prefixed, $shorthand, comma);
+      }
+
+    }
+
+    // If shorthand is a simple string, color or image
+    @else if $type == string {
+      $backgrounds-prefixed: join($backgrounds-prefixed, $shorthand, comma);
+    }
+  }
+  @return $backgrounds-prefixed;
+}
+
+//Examples:
+  //@include background(linear-gradient(top, orange, red));
+  //@include background(radial-gradient(50% 50%, cover circle, orange, red));
+  //@include background(url("/images/a.png") no-repeat, linear-gradient(orange, red));
+  //@include background(url("image.png") center center, linear-gradient(orange, red), url("image.png"));
+
+
+/* ================= */
+/* = Border Radius = */
+/* ================= */  
+ @mixin border-radius ($values) {
+  -moz-border-radius: $values;
+  -webkit-border-radius: $values;
+  border-radius: $values;
+} 
+  
+
+  
+/* ================ */
+/* = Border Image = */
+/* ================ */
+@mixin border-image($images) {
+  -webkit-border-image: border-add-prefix($images, webkit);
+     -moz-border-image: border-add-prefix($images, moz);
+       -o-border-image: border-add-prefix($images, o);
+          border-image: border-add-prefix($images);
+}
+
+@function border-add-prefix($images, $vendor: false) {
+  $border-image: ();
+  $images-type:  type-of(nth($images, 1));
+  $first-var:    nth(nth($images, 1), 1);          // Get type of Gradient (Linear || radial)
+
+  // If input is a gradient
+  @if $images-type == string {
+    @if ($first-var == "linear") or ($first-var == "radial") {
+      @for $i from 2 through length($images) {
+        $gradient-type: nth($images, 1);           // Get type of gradient (linear || radial)
+        $gradient-args: nth($images, $i);          // Get actual gradient (red, blue)
+        $border-image:  render-gradients($gradient-args, $gradient-type, $vendor);
+      }
+    }
+
+    // If input is a URL
+    @else {
+      $border-image: $images;
+    }
+  }
+
+  // If input is gradient or url + additional args
+  @else if $images-type == list {
+    @for $i from 1 through length($images) {
+      $type: type-of(nth($images, $i));           // Get type of variable - List or String
+
+      // If variable is a list - Gradient
+      @if $type == list {
+        $gradient-type: nth(nth($images, $i), 1); // Get type of gradient (linear || radial)
+        $gradient-args: nth(nth($images, $i), 2); // Get actual gradient (red, blue)
+        $border-image:  render-gradients($gradient-args, $gradient-type, $vendor);
+      }
+
+      // If variable is a string - Image or number
+      @else if ($type == string) or ($type == number) {
+        $border-image: append($border-image, nth($images, $i));
+      }
+    }
+  }
+  @return $border-image;
+}
+
+//Examples:
+// @include border-image(url("image.png"));
+// @include border-image(url("image.png") 20 stretch);
+// @include border-image(linear-gradient(45deg, orange, yellow));
+// @include border-image(linear-gradient(45deg, orange, yellow) stretch);
+// @include border-image(linear-gradient(45deg, orange, yellow) 20 30 40 50 stretch round);
+// @include border-image(radial-gradient(top, cover, orange, yellow, orange));
+
+
+/* ============== */
+/* = Box Shadow = */
+/* ============== */
+// Box-Shadow Mixin Requires Sass v3.1.1+
+@mixin box-shadow ($shadow-1,
+  $shadow-2: false, $shadow-3: false,
+  $shadow-4: false, $shadow-5: false,
+  $shadow-6: false, $shadow-7: false,
+  $shadow-8: false, $shadow-9: false)
+  {
+    $full: compact($shadow-1, $shadow-2, $shadow-3, $shadow-4,
+                   $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9);
+
+    @include prefixer(box-shadow, $full, webkit, not moz);
+}
+
+
+/* ============== */
+/* = Box Sizing = */
+/* ============== */
+@mixin box-sizing ($box) {
+//  content-box | border-box | inherit
+  @include prefixer(box-sizing, $box);
+}
+
+
+/* =========== */
+/* = Columns = */
+/* =========== */
+@mixin columns($arg: auto) {
+// <column-count> || <column-width>
+  @include prefixer(columns, $arg);
+}
+
+@mixin column-count($int: auto) {
+// auto || integer
+  @include prefixer(column-count, $int);
+}
+
+@mixin column-gap($length: normal) {
+// normal || length
+  @include prefixer(column-gap, $length);
+}
+
+@mixin column-fill($arg: auto) {
+// auto || length
+  @include prefixer(columns-fill, $arg);
+}
+
+@mixin column-rule($arg) {
+// <border-width> || <border-style> || <color>
+  @include prefixer(column-rule, $arg);
+}
+
+@mixin column-rule-color($color) {
+  @include prefixer(column-rule-color, $color);
+}
+
+@mixin column-rule-style($style: none) {
+// none | hidden | dashed | dotted | double | groove | inset | inset | outset | ridge | solid
+  @include prefixer(column-rule-style, $style);
+}
+
+@mixin column-rule-width ($width: none) {
+  @include prefixer(column-rule-width, $width);
+}
+
+@mixin column-span($arg: none) {
+// none || all
+  @include prefixer(column-span, $arg);
+}
+
+@mixin column-width($length: auto) {
+// auto || length
+  @include prefixer(column-width, $length);
+}
+
+
+/* ============ */
+/* = Flex Box = */
+/* ============ */
+// CSS3 Flexible Box Model and property defaults
+
+// Custom shorthand notation for flexbox
+@mixin box($orient: inline-axis, $pack: start, $align: stretch) {
+  @include display-box;
+  @include box-orient($orient);
+  @include box-pack($pack);
+  @include box-align($align);
+}
+
+@mixin display-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+}
+
+@mixin box-orient($orient: inline-axis) {
+// horizontal|vertical|inline-axis|block-axis|inherit
+  @include prefixer(box-orient, $orient);
+}
+
+@mixin box-pack($pack: start) {
+// start|end|center|justify
+  @include prefixer(box-pack, $pack);
+}
+
+@mixin box-align($align: stretch) {
+// start|end|center|baseline|stretch
+  @include prefixer(box-align, $align);
+}
+
+@mixin box-direction($direction: normal) {
+// normal|reverse|inherit
+  @include prefixer(box-direction, $direction);
+}
+
+@mixin box-lines($lines: single) {
+// single|multiple
+  @include prefixer(box-lines, $lines);
+}
+
+@mixin box-ordinal-group($int: 1) {
+  @include prefixer(box-ordinal-group, $int);
+}
+
+@mixin box-flex($value: 0.0) {
+  @include prefixer(box-flex, $value);
+}
+
+@mixin box-flex-group($int: 1) {
+  @include prefixer(box-flex-group, $int);
+}
+
+
+/* ================ */
+/* = Inline Block = */
+/* ================ */
+@mixin inline-block {
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+}
+
+
+/* =================== */
+/* = Linear Gradient = */
+/* =================== */
+@mixin linear-gradient($pos, $G1, $G2: false,
+                       $G3: false, $G4: false,
+                       $G5: false, $G6: false,
+                       $G7: false, $G8: false,
+                       $G9: false, $G10: false,
+                       $deprecated-pos1: left top,
+                       $deprecated-pos2: left bottom,
+                       $fallback: false) {
+  // Detect what type of value exists in $pos
+  $pos-type: type-of(nth($pos, 1));
+
+  // If $pos is missing from mixin, reassign vars and add default position
+  @if ($pos-type == color) or (nth($pos, 1) == "transparent")  {
+    $G10: $G9; $G9: $G8; $G8: $G7; $G7: $G6; $G6: $G5;
+     $G5: $G4; $G4: $G3; $G3: $G2; $G2: $G1; $G1: $pos;
+    $pos: top; // Default position
+  }
+
+  $full: compact($G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10);
+
+  // Set $G1 as the default fallback color
+  $fallback-color: nth($G1, 1);
+
+  // If $fallback is a color use that color as the fallback color
+  @if (type-of($fallback) == color) or ($fallback == "transparent") {
+    $fallback-color: $fallback;
+  }
+
+  background-color: $fallback-color;
+  background-image: deprecated-webkit-gradient(linear, $deprecated-pos1, $deprecated-pos2, $full); // Safari <= 5.0
+  background-image:  -webkit-linear-gradient($pos, $full); // Safari 5.1+, Chrome
+  background-image:     -moz-linear-gradient($pos, $full);
+  background-image:      -ms-linear-gradient($pos, $full);
+  background-image:       -o-linear-gradient($pos, $full);
+  background-image: unquote("linear-gradient(#{$pos}, #{$full})");
+}
+
+
+// Usage: Gradient position is optional, default is top. Position can be a degree. Color stops are optional as well.
+// @include linear-gradient(#1e5799, #2989d8);
+// @include linear-gradient(#1e5799, #2989d8, $fallback:#2989d8);
+// @include linear-gradient(top, #1e5799 0%, #2989d8 50%);
+// @include linear-gradient(50deg, rgba(10, 10, 10, 0.5) 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+
+
+/* ============ */
+/* = Prefixer = */
+/* ============ */
+@mixin prefixer ($property, $value,
+                 $webkit: true,
+                    $moz: true,
+                     $ms: false,
+                      $o: false,
+                   $spec: true) {
+  @if $webkit { -webkit-#{$property}: $value; }
+  @if $moz    {    -moz-#{$property}: $value; }
+  @if $ms     {     -ms-#{$property}: $value; }
+  @if $o      {      -o-#{$property}: $value; }
+  @if $spec   {         #{$property}: $value; }
+}
+
+
+/* =================== */
+/* = Radial Gradient = */
+/* =================== */
+// Requires Sass 3.1+
+@mixin radial-gradient($G1,        $G2,
+                       $G3: false, $G4: false,
+                       $G5: false, $G6: false,
+                       $G7: false, $G8: false,
+                       $G9: false, $G10: false,
+                       $pos: 50% 50%,
+                       $shape-size: ellipse cover,
+                       $deprecated-pos1: center center,
+                       $deprecated-pos2: center center,
+                       $deprecated-radius1: 0,
+                       $deprecated-radius2: 460,
+                       $fallback: false) {
+
+  @each $value in $G1, $G2 {
+    $first-val: nth($value, 1);
+    $pos-type:  type-of($first-val);
+
+    @if ($pos-type != color) or ($first-val != "transparent") {
+      @if ($pos-type == number)
+      or ($first-val == "center")
+      or ($first-val == "top")
+      or ($first-val == "right")
+      or ($first-val == "bottom")
+      or ($first-val == "left") {
+
+        $pos: $value;
+
+        @if $pos == $G1 {
+          $G1: false;
+        }
+      }
+
+      @else if
+         ($first-val == "ellipse")
+      or ($first-val == "circle")
+      or ($first-val == "closest-side")
+      or ($first-val == "closest-corner")
+      or ($first-val == "farthest-side")
+      or ($first-val == "farthest-corner")
+      or ($first-val == "contain")
+      or ($first-val == "cover") {
+
+        $shape-size: $value;
+
+        @if $value == $G1 {
+          $G1: false;
+        }
+
+        @else if $value == $G2 {
+          $G2: false;
+        }
+      }
+    }
+  }
+
+  $full: compact($G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10);
+
+  $fallback-color: nth($G1, 1);
+
+  @if (type-of($fallback) == color) or ($fallback == "transparent") {
+    $fallback-color: $fallback;
+  }
+
+  background-color:  $fallback-color;
+  background-image: deprecated-webkit-gradient(radial, $deprecated-pos1, $deprecated-pos2, $full, $deprecated-radius1, $deprecated-radius2); // Safari <= 5.0
+  background-image:  -webkit-radial-gradient($pos, $shape-size, $full);
+  background-image:     -moz-radial-gradient($pos, $shape-size, $full);
+  background-image:      -ms-radial-gradient($pos, $shape-size, $full);
+  background-image:       -o-radial-gradient($pos, $shape-size, $full);
+  background-image: unquote("radial-gradient(#{$pos}, #{$shape-size}, #{$full})");
+}
+
+//  Usage: Gradient position and shape-size are required. Color stops are optional.
+//  @include radial-gradient(50% 50%, circle cover, #1e5799, #efefef);
+//  @include radial-gradient(50% 50%, circle cover, #eee 10%, #1e5799 30%, #efefef);
+
+
+/* ============= */
+/* = Transform = */
+/* ============= */
+@mixin transform($property: none) {
+//  none | <transform-function>
+  @include prefixer(transform, $property, webkit, moz, ms, o);
+}
+
+@mixin transform-origin($axes: 50%) {
+// x-axis - left | center | right  | length | %
+// y-axis - top  | center | bottom | length | %
+// z-axis -                          length
+  @include prefixer(transform-origin, $axes, webkit, moz, ms, o);
+}
+
+
+/* ============== */
+/* = Transition = */
+/* ============== */
+// Shorthand mixin. Supports multiple parentheses-deliminated values for each variable.
+// Example: @include transition (all, 2.0s, ease-in-out);
+//          @include transition ((opacity, width), (1.0s, 2.0s), ease-in, (0, 2s));
+//          @include transition ($property:(opacity, width), $delay: (1.5s, 2.5s));
+
+@mixin transition ($prop-1: all 0.15s ease-out 0,
+  $prop-2: false, $prop-3: false,
+  $prop-4: false, $prop-5: false,
+  $prop-6: false, $prop-7: false,
+  $prop-8: false, $prop-9: false)
+  {
+    $full: compact($prop-1, $prop-2, $prop-3, $prop-4, $prop-5,
+                   $prop-6, $prop-7, $prop-8, $prop-9);
+
+  @include prefixer(transition, $full, webkit, moz, ms, o);
+}
+
+
+
+@mixin transition-property ($prop-1: all,
+  $prop-2: false, $prop-3: false,
+  $prop-4: false, $prop-5: false,
+  $prop-6: false, $prop-7: false,
+  $prop-8: false, $prop-9: false)
+  {
+    $full: compact($prop-1, $prop-2, $prop-3, $prop-4, $prop-5,
+                   $prop-6, $prop-7, $prop-8, $prop-9);
+
+   -webkit-transition-property: transition-property-names($full, 'webkit');
+      -moz-transition-property: transition-property-names($full, 'moz');
+       -ms-transition-property: transition-property-names($full, 'ms');
+        -o-transition-property: transition-property-names($full, 'o');
+           transition-property: transition-property-names($full, false);
+}
+
+@mixin transition-duration ($time-1: 0,
+  $time-2: false, $time-3: false,
+  $time-4: false, $time-5: false,
+  $time-6: false, $time-7: false,
+  $time-8: false, $time-9: false)
+  {
+    $full: compact($time-1, $time-2, $time-3, $time-4, $time-5,
+                   $time-6, $time-7, $time-8, $time-9);
+
+  @include prefixer(transition-duration, $full, webkit, moz, ms, o);
+}
+
+@mixin transition-timing-function ($motion-1: ease,
+  $motion-2: false, $motion-3: false,
+  $motion-4: false, $motion-5: false,
+  $motion-6: false, $motion-7: false,
+  $motion-8: false, $motion-9: false)
+  {
+    $full: compact($motion-1, $motion-2, $motion-3, $motion-4, $motion-5,
+                   $motion-6, $motion-7, $motion-8, $motion-9);
+
+// ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()
+  @include prefixer(transition-timing-function, $full, webkit, moz, ms, o);
+}
+
+@mixin transition-delay ($time-1: 0,
+  $time-2: false, $time-3: false,
+  $time-4: false, $time-5: false,
+  $time-6: false, $time-7: false,
+  $time-8: false, $time-9: false)
+  {
+    $full: compact($time-1, $time-2, $time-3, $time-4, $time-5,
+                   $time-6, $time-7, $time-8, $time-9);
+
+  @include prefixer(transition-delay, $full, webkit, moz, ms, o);
+}
+
+
+
+/* ============= */
+/* = Hide Text = */
+/* ============= */
+@mixin hide-text {
+  background-color: transparent;
+  border:           0;
+  color:            transparent;
+  font:             0/0 a;
+  text-shadow:      none;
+}
+
+// A CSS image replacement method that does not require the use of text-indent.
+//
+// Examples
+//
+//   .ir {
+//     @include hide-text;
+//   }
+
+
+/* ==================== */
+/* = Timing Functions = */
+/* ==================== */
+// CSS cubic-bezier timing functions. Timing functions courtesy of jquery.easie (github.com/jaukia/easie)
+// Timing functions are the same as demo'ed here: http://jqueryui.com/demos/effect/easing.html
+
+// EASE IN
+$ease-in-quad:      cubic-bezier(0.550,  0.085, 0.680, 0.530);
+$ease-in-cubic:     cubic-bezier(0.550,  0.055, 0.675, 0.190);
+$ease-in-quart:     cubic-bezier(0.895,  0.030, 0.685, 0.220);
+$ease-in-quint:     cubic-bezier(0.755,  0.050, 0.855, 0.060);
+$ease-in-sine:      cubic-bezier(0.470,  0.000, 0.745, 0.715);
+$ease-in-expo:      cubic-bezier(0.950,  0.050, 0.795, 0.035);
+$ease-in-circ:      cubic-bezier(0.600,  0.040, 0.980, 0.335);
+$ease-in-back:      cubic-bezier(0.600, -0.280, 0.735, 0.045);
+
+// EASE OUT
+$ease-out-quad:     cubic-bezier(0.250,  0.460, 0.450, 0.940);
+$ease-out-cubic:    cubic-bezier(0.215,  0.610, 0.355, 1.000);
+$ease-out-quart:    cubic-bezier(0.165,  0.840, 0.440, 1.000);
+$ease-out-quint:    cubic-bezier(0.230,  1.000, 0.320, 1.000);
+$ease-out-sine:     cubic-bezier(0.390,  0.575, 0.565, 1.000);
+$ease-out-expo:     cubic-bezier(0.190,  1.000, 0.220, 1.000);
+$ease-out-circ:     cubic-bezier(0.075,  0.820, 0.165, 1.000);
+$ease-out-back:     cubic-bezier(0.175,  0.885, 0.320, 1.275);
+
+// EASE IN OUT
+$ease-in-out-quad:  cubic-bezier(0.455,  0.030, 0.515, 0.955);
+$ease-in-out-cubic: cubic-bezier(0.645,  0.045, 0.355, 1.000);
+$ease-in-out-quart: cubic-bezier(0.770,  0.000, 0.175, 1.000);
+$ease-in-out-quint: cubic-bezier(0.860,  0.000, 0.070, 1.000);
+$ease-in-out-sine:  cubic-bezier(0.445,  0.050, 0.550, 0.950);
+$ease-in-out-expo:  cubic-bezier(1.000,  0.000, 0.000, 1.000);
+$ease-in-out-circ:  cubic-bezier(0.785,  0.135, 0.150, 0.860);
+$ease-in-out-back:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
+
+
+/* ============ */
+/* = Clearfix = */
+/* ============ */
+@mixin clearfix{ 
+    &:before,
+    &:after {
+      content: ".";    
+      display: block;    
+      height: 0;
+      overflow: hidden;	
+    }
+    &:after {clear: both;}
+    & {zoom: 1; } 
+}
+
+
+/* ================== */
+/* = After y Before = */
+/* ================== */
+@mixin after($content : "") {
+  & {
+    *zoom: expression(
+      this.runtimeStyle.zoom="1",
+      (ea = this['appendChild']( document.createElement("small"), null )),
+      ea.innerHTML="#{$content}",
+      ea.className="after pseudo-element"
+    );
+  }
+ 
+  &:after {
+    content : $content;
+  }
+}
+
+@mixin before($content : "") {
+  & {
+    *zoom: expression(
+      this.runtimeStyle.zoom="1",
+      (eb = this[ 'insertBefore']( document.createElement("small"), this.firstChild ) ),
+      eb.innerHTML="#{$content}",
+      eb.className="before pseudo-element"
+    );
+  }
+ 
+  &:before {
+    content : $content;
+  }
+}
+
+@mixin after_and_before($after_content : "", $before_content : "") {
+  & {
+    *zoom: expression(
+      this.runtimeStyle.zoom="1",
+      (eb = this[ 'insertBefore' ]( document.createElement("small"),  this.firstChild )),
+      (ea = this[ 'appendChild' ]( document.createElement("small"), null )),
+      eb.innerHTML="#{$before_content}",
+      eb.className="after pseudo-element",
+      ea.innerHTML="#{$after_content}",
+      ea.className="before pseudo-element"
+    );
+  }
+  
+  &:after {
+    content : $after_content;
+  }
+  &:before {
+    content : $before_content;
+  }
+
+}
+
+
+/* =========== */
+/* = Opacity = */
+/* =========== */
+@mixin opacity($opacity, $ie: $useIEFilters){
+    -moz-opacity: $opacity;
+    -khtml-opacity: $opacity;
+    opacity: $opacity;
+    
+    @if $ie == 1 { 
+      $ie_opacity: $opacity*100;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie_opacity})";
+      filter: alpha(opacity=#{$ie_opacity});
+    }
+}
+

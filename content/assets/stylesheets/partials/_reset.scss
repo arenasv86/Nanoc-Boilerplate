@@ -1,21 +1,15 @@
-/*
- * HTML5 Boilerplate
- *
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- *
- * Detailed information about this CSS: h5bp.com/css
- *
- * ==|== normalize ==========================================================
- */
-
+ * {
+ 	margin: 0;
+ 	padding: 0;
+ 	border: 0;
+  //@include box-sizing(border-box);
+ }
 
 /* =============================================================================
    HTML5 display definitions
    ========================================================================== */
 
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, legend { display: block; }
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
 [hidden] { display: none; }
@@ -30,11 +24,11 @@ audio:not([controls]) { display: none; }
  * 2. Prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g
  */
 
-html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; }
 
 html, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
-body { margin: 0; font-size: 1em; line-height: 1.4; }
+body { margin: 0; font-size:x-small; line-height: normal; }
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -42,17 +36,15 @@ body { margin: 0; font-size: 1em; line-height: 1.4; }
  * Also: hot pink! (or customize the background color to match your design)
  */
 
-::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
-::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::-moz-selection { background: #404040; color: #fff; text-shadow: none; }
+::selection { background: #404040; color: #fff; text-shadow: none; }
 
 
 /* =============================================================================
    Links
    ========================================================================== */
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
-a:hover { color: #06e; }
+a { color: #009ad4; @include transition(color .5s linear); }
 a:focus { outline: thin dotted; }
 
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
@@ -65,7 +57,7 @@ a:hover, a:active { outline: 0; }
 
 abbr[title] { border-bottom: 1px dotted; }
 
-b, strong { font-weight: bold; }
+b, strong { font-weight: 600; }
 
 blockquote { margin: 1em 40px; }
 
@@ -97,10 +89,11 @@ sub { bottom: -0.25em; }
 /* =============================================================================
    Lists
    ========================================================================== */
-
+/*
 ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
-dd { margin: 0 0 0 40px; }
-nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+dd { margin: 0 0 0 40px; }*/
+nav ul, nav ol, li { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+li a { text-decoration: none; }
 
 
 /* =============================================================================
@@ -119,15 +112,6 @@ img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
  */
 
 svg:not(:root) { overflow: hidden; }
-
-
-/* =============================================================================
-   Figures
-   ========================================================================== */
-
-figure { margin: 0; }
-
-
 /* =============================================================================
    Forms
    ========================================================================== */
@@ -151,7 +135,7 @@ legend { border: 0; *margin-left: -7px; padding: 0; white-space: normal; }
  * 3. Define consistent vertical alignment display in all browsers
  */
 
-button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; outline: 0; }
 
 /*
  * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
@@ -211,39 +195,7 @@ td { vertical-align: top; }
    Chrome Frame Prompt
    ========================================================================== */
 
-.chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
-
-
-/* ==|== primary styles =====================================================
-   Author:
-   ========================================================================== */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ==|== media queries ======================================================
-   EXAMPLE Media Query for Responsive Design.
-   This example overrides the primary ('mobile first') styles
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
-
-
+.chromeframe { margin: 0.2em 0; background: #e38d4b; color: black; padding: 1em; font-size: 1.4em; text-align: center; text-shadow: none;}
 
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.
@@ -264,11 +216,6 @@ td { vertical-align: top; }
 
 /* Hide visually and from screenreaders, but maintain layout */
 .invisible { visibility: hidden; }
-
-/* Contain floats: h5bp.com/q */
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { *zoom: 1; }
 
 
 
