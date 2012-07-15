@@ -1,0 +1,18 @@
+.clearfix {
+  @include clearfix;
+}
+
+.inline-block {
+  display: -moz-inline-stack;
+  display: inline-block;
+  *display:inline;
+  vertical-align: middle;
+  zoom:1;
+}
+
+.inline-block-reset-spacing {
+  letter-spacing: -0.279em;
+  > *{
+    letter-spacing:normal;
+  }
+}
