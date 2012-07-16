@@ -5,6 +5,7 @@ Nanoc-Boilerplate
 
 HTML5 Boilerplate : http://es.html5boilerplate.com/<br>
 SASS : http://sass-lang.com/<br>
-Bourbon : http://thoughtbot.com/bourbon/<br>
+Una selección de los Mixins más útiles de Bourbon : http://thoughtbot.com/bourbon/<br>
+Utiliza una versión personalizada de Normalize.css : http://necolas.github.com/normalize.css/<br>
 Incluye etiquetas meta y og para facebook y optimización de SEO<br>
-Utiliza una versión personalizada de Normalize.css : http://necolas.github.com/normalize.css/
+Compass está configurado por si es necesario usarlo, pero es necesario descomentar las primeras lineas de el archivo style.css
